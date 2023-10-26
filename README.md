@@ -44,9 +44,11 @@
     </td>
     <td>
       <ul>
-        <li>마우스 클릭 로직 구현</li>
-        <li>Inpainting 모델 서칭 및 LaMa 모델 적용</li>
-        <li><a href = "mailto: pnudpwls1103@pusan.ac.kr">pnudpwls1103@pusan.ac.kr</a></li>
+        <li>데이터 수집 및 분석</li>
+        <li>모델 설계</li>
+        <li>IPA 데이터 전처리 및 모델 구현</li>
+        <li>데이터 통계 도출</li>
+        <li><a href = "mailto: swa10000@pusan.ac.kr">swa10000@pusan.ac.kr</a></li>
       </ul>
     </td>
   </tr>
