@@ -21,15 +21,25 @@ class DatabaseManager:
         result = self.cursor.fetchone()
         if result:
             return result
-        else:
-            select_query = '''
+
+        select_query = '''
+        SELECT *
+        FROM words
+        WHERE origin_lang = ?
+        '''
+        self.cursor.execute(select_query, (word.lower(),))
+        result = self.cursor.fetchone()
+        if result:
+            return result
+
+        select_query = '''
                 SELECT *
                 FROM words
                 WHERE origin_lang = ?
                 COLLATE NOCASE
             '''
-            self.cursor.execute(select_query, (word,))
-            return self.cursor.fetchone()
+        self.cursor.execute(select_query, (word,))
+        return self.cursor.fetchone()
 
     #단일 query는 시간이 많이 걸리기 때문에, 데이터 한번에 query
     def check_words_existence(self, words_tuple):
@@ -46,20 +56,20 @@ class DatabaseManager:
         result = self.cursor.fetchall()
         return result
 
-
-
     def input_data(self, text, pron=True):
         count = int(input(f"{text}의 개수: "))
 
         if pron:
-            data_list = '/'.join([f"{input(f'{text} 데이터: ')}/{input('발음 데이터: ')}" for _ in range(count)])
+            data_list = '/'.join(
+                [f"{input(f'{text} 데이터: ')}/{input('발음 데이터: ')}" for _ in range(count)])
         else:
-            data_list = '/'.join([input(f'{text} 데이터: ') for _ in range(count)])
+            data_list = '/'.join([input(f'{text} 데이터: ')
+                                 for _ in range(count)])
 
         return data_list
 
-
     #db에 있는 단어 검색
+
     def search_word(self, word):
         result = self.check_word_existence(word)
 
@@ -101,14 +111,17 @@ class DatabaseManager:
         else:
             insert_index = len(sorted_words) + 1
 
-        self.execute_and_commit("UPDATE words SET id = id + 10000000 WHERE id >= ?", (insert_index,))
-        self.execute_and_commit("UPDATE words SET id = id - 9999999 WHERE id >= ?", (insert_index + 10000000,))
+        self.execute_and_commit(
+            "UPDATE words SET id = id + 10000000 WHERE id >= ?", (insert_index,))
+        self.execute_and_commit(
+            "UPDATE words SET id = id - 9999999 WHERE id >= ?", (insert_index + 10000000,))
 
         insert_query = '''
             INSERT INTO words (id, word, word_type, word_unit, conju_list, pronun_list, sense_no, sense_type, pos, origin_lang, origin_lang_type)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         '''
-        self.execute_and_commit(insert_query, (insert_index, word_unit, None, None, None, word_unit, None, None, None, origin_lang, None))
+        self.execute_and_commit(insert_query, (insert_index, word_unit,
+                                None, None, None, word_unit, None, None, None, origin_lang, None))
         print(f"단어 '{word}' 추가 완료\n")
 
     #단어 삭제
@@ -120,8 +133,10 @@ class DatabaseManager:
             return
 
         word_id = result[0]
-        self.execute_and_commit("DELETE FROM words WHERE origin_lang = ?", (word,))
-        self.execute_and_commit("UPDATE words SET id = id - 1 WHERE id > ?", (word_id,))
+        self.execute_and_commit(
+            "DELETE FROM words WHERE origin_lang = ?", (word,))
+        self.execute_and_commit(
+            "UPDATE words SET id = id - 1 WHERE id > ?", (word_id,))
         print(f"단어 '{word}' 삭제 완료\n")
 
     #단어 수정
@@ -134,8 +149,8 @@ class DatabaseManager:
 
         print("수정을 원하는 항목을 선택해주세요\n")
         print("1. word_type\n2. word_unit\n3. conju_list\n"
-            "4. pronun_list\n5. sense_no\n6. sense_type\n"
-            "7. pos\n8. origin_lang\n9. origin_lang_type")
+              "4. pronun_list\n5. sense_no\n6. sense_type\n"
+              "7. pos\n8. origin_lang\n9. origin_lang_type")
 
         select = input()
 
@@ -152,11 +167,14 @@ class DatabaseManager:
             SET {} = ?
             WHERE word = ?
         '''
-        columns = ['word_type', 'word_unit', 'conju_list', 'pronun_list', 'sense_no', 'sense_type', 'pos', 'origin_lang', 'origin_lang_type']
+        columns = ['word_type', 'word_unit', 'conju_list', 'pronun_list',
+                   'sense_no', 'sense_type', 'pos', 'origin_lang', 'origin_lang_type']
         column = columns[int(select) - 1]
 
-        self.execute_and_commit(modify_query.format(column), (modify_text, word))
+        self.execute_and_commit(
+            modify_query.format(column), (modify_text, word))
         print(f"단어 '{word}' 수정 완료\n")
+
 
 class DatabaseConjuManager(DatabaseManager):
 
@@ -168,7 +186,6 @@ class DatabaseConjuManager(DatabaseManager):
         else:
             print(f"단어 '{word}' 검색 완료\n")
             print(result, '\n')
-
 
     def insert_word(self, word):
         result = self.check_word_existence(word)
@@ -195,14 +212,17 @@ class DatabaseConjuManager(DatabaseManager):
         else:
             insert_index = len(sorted_words) + 1
 
-        self.execute_and_commit("UPDATE words SET id = id + 10000000 WHERE id >= ?", (insert_index,))
-        self.execute_and_commit("UPDATE words SET id = id - 9999999 WHERE id >= ?", (insert_index + 10000000,))
+        self.execute_and_commit(
+            "UPDATE words SET id = id + 10000000 WHERE id >= ?", (insert_index,))
+        self.execute_and_commit(
+            "UPDATE words SET id = id - 9999999 WHERE id >= ?", (insert_index + 10000000,))
 
         insert_query = '''
             INSERT INTO words (id, word, pronun_list)
             VALUES (?, ?, ?)
         '''
-        self.execute_and_commit(insert_query, (insert_index, word, pronun_list))
+        self.execute_and_commit(
+            insert_query, (insert_index, word, pronun_list))
         print(f"단어 '{word}' 추가 완료\n")
 
     def modify_word(self, word):
@@ -233,7 +253,8 @@ class DatabaseConjuManager(DatabaseManager):
         columns = ['conju_list', 'pronun_list']
         column = columns[1]
 
-        self.execute_and_commit(modify_query.format(column), (modify_text, word))
+        self.execute_and_commit(
+            modify_query.format(column), (modify_text, word))
         print(f"단어 '{word}' 수정 완료\n")
 
 
@@ -241,7 +262,8 @@ def main():
 
     do_conju = False
     if do_conju:
-        db_manager = DatabaseConjuManager('data/processed/database/conju_database.db')
+        db_manager = DatabaseConjuManager(
+            'data/processed/database/conju_database.db')
         actions = {
             "1": db_manager.search_word,
             "2": db_manager.insert_word,
@@ -258,7 +280,8 @@ def main():
         }
 
     while True:
-        choice = input("원하는 작업을 선택하세요:\n1. 단어 검색\n2. 단어 추가\n3. 단어 삭제\n4. 단어 수정\n5. 종료\n")
+        choice = input(
+            "원하는 작업을 선택하세요:\n1. 단어 검색\n2. 단어 추가\n3. 단어 삭제\n4. 단어 수정\n5. 종료\n")
 
         if choice == "5":
             break
