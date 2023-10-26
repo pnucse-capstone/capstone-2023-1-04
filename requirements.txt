@@ -8,5 +8,4 @@ torchvision==0.15.2+cu117
 sqlite3
 dataclasses-json
 jamo
-numpy
 matplotlib
