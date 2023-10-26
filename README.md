@@ -66,7 +66,6 @@
 
 
 ### 파일 구조
-main 소스 파일 위치와 pretrained model 위치를 명시해놓음
 ```
 project                         
 ├── data                          // 데이터베이스 파일과 tokenizer pickle 파일
