@@ -93,18 +93,10 @@ source                           // 소스 모음 (Inpainting model clone 위치
 2. 패키지 : requirements.txt 참고  
 3. 설치  
 - 버전에 맞는 pytorch 및 cuda 설치
-- 모델 준비 : source 폴더 아래에 clone  
-```
-git clone https://github.com/advimman/lama.git
-git clone https://github.com/nipponjo/deepfillv2-pytorch.git
-git clone https://github.com/fenglinglwb/MAT.git
-```
-레포지토리의 폴더에 있는 파일 복사 붙여넣기
 
 - 패키지 설치
 ```
 pip install -r requirements.txt
-conda install ninja
 ```
 
 - pretrained model : 파일 구조도를 참고하여 배치  
