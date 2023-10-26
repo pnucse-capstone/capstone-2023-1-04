@@ -7,7 +7,7 @@
 
 ## 2. 팀소개
 
-### 드루와 유니티의 숲 팀ㄴ
+### RNG 아니조 팀
 
 <table>
     <tr>
@@ -20,7 +20,7 @@
         <li>모델 설계</li>
         <li>우리말샘 데이터 전처리 및 모델 구현</li>
         <li>추가 데이터 수집 및 전처리</li>
-        <li><a href = "mailto: chhj0319@pusan.ac.kr">chhj0319@pusan.ac.kr</a></li>
+        <li><a href = "mailto: jimbo98@pusan.ac.kr">jimbo98@pusan.ac.kr</a></li>
       </ul>
     </td>
   </tr>
