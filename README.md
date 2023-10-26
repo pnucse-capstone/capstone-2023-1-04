@@ -52,20 +52,6 @@
       </ul>
     </td>
   </tr>
-      <tr>
-    <td>
-      박건우
-    </td>
-    <td>
-      <ul>
-        <li>데이터 수집 및 분석</li>
-        <li>모델 설계</li>
-        <li>IPA 데이터 전처리 및 모델 구현</li>
-        <li>데이터 통계 도출</li>
-        <li><a href = "mailto: swa10000@pusan.ac.kr">swa10000@pusan.ac.kr</a></li>
-      </ul>
-    </td>
-  </tr>
 </table>
 
 ## 3. 구성도
