@@ -68,7 +68,7 @@
 
 ![한영혼용이미지](https://github.com/pnucse-capstone/capstone-2023-1-04/assets/84282849/3c5db9f8-8f4f-40fc-9009-02796896da5d)
 
-<p>-> Wife한테 다녀와도 되냐고 물었더니 ok 했어서 물어봤어요 But your friend랑 같이 있으면 i am신뢰에요~</p>
+<p>-> Wife한테 다녀와도 되냐고 물었더니 ok 했어서 물어봤어요 But your friend랑 같이 있으면 I am신뢰에요~</p>
 <p>-> 와이프한테 다녀와도 되냐고 물었더니 오케이 했어서 물어봤어요 벗 유어 프렌드랑 같이 있으면 아이 앰신뢰에요~</p>
 
 </br>
