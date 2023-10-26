@@ -1,5 +1,5 @@
 # 지식베이스와 딥러닝을 통한 영어 - 한글  
-Grapheme-to-Phoneme 모델의 성능 향상 연구
+# Grapheme-to-Phoneme 모델의 성능 향상 연구
 
 ## 1. 프로젝트 소개
 
