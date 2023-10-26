@@ -68,23 +68,48 @@
 ### 파일 구조
 main 소스 파일 위치와 pretrained model 위치를 명시해놓음
 ```
-source                           // 소스 모음 (Inpainting model clone 위치)
-├── bin                          // main program 소스 폴더
-│   ├── Enum.py                      // Enum
-│   ├── main.py                      // main 소스 파일
-│   └── yolov8n-seg.pt               // YOLOv8 segmentation pretrained model
-├── deepfillv2                       // Inpainting model : deepfillv2
-│   └── pretrained                      // pretrained model 폴더
-│       └── states_pt_places2.pth         // deepfillv2 pretrained model (다운로드 해야 함)
-├── lama                             // Inpainting model : lama
-│   └── big-lama                        // pretrained model 폴더
-│       └── models                     
-│           └── best.ckpt                 // lama pretrained model (다운로드 해야 함)
-│       └── config.yaml                   // lama config 파일
-├── MAT                              // Inpainting model : MAT
-│   └── pretrained                      // pretrained model 폴더
-│       └── Places_512.pkl                // MAT pretrained model (다운로드 해야 함)
-└── requirements.txt                // 패키치 설치 파일
+project                         
+├── data                          // 데이터베이스 파일과 tokenizer pickle 파일
+│   ├── analysis_results          
+│   │    └── our_sam_counter_results.txt   // 전처리 결과          
+│   ├── database
+│   │    ├── alphabet_database.db          // 알파벳 데이터베이스  
+│   │    ├── eng_database.db               // 외래어 데이터베이스
+│   │    └── ipa_database.db               // IPA 데이터베이스  
+│   └── pickles                           // tokenizer pickle 파일
+│       ├── eng.pickle                        
+│       ├── kor.pickle
+│       ├── NanumSquareR
+│       └── tokenizer.pickle
+├── models                       // 모델
+│   ├── config
+│   │   ├── params1              // 모델 파라미터
+│   │   └── params2              // 모델 파라미터2
+│   ├── model15.pt               // 사용할 모델
+│   └── model21.pt               // 사용할 모델2
+├── src                          // 소스 코드 모음
+│   ├── analysis
+│   │   ├── db_word_checker.py   // 통계용
+│   │   └── our_sam_counter.py   // 통계용            
+│   ├── database                      
+│   │   ├── definition
+│   │   │   └── data_def.py      // dataclass                    
+│   │   ├── db_maker.py          // DB 생성 코드 
+│   │   └── db_manager.py        // DB 관리 코드
+│   ├── picklers                          
+│   │   ├── pkl_alp_maker.py    // alphabet DB생성을 위한 pickle 생성 코드
+│   │   ├── pkl_ipa_maker.py    // ipa DB생성을 위한 pickle 생성 코드
+│   │   └── pkl_sam_maker.py    // 외래어 DB생성을 위한 pickle 생성 코드           
+│   ├── transformer_architecture // 딥 러닝 모델 관련 코드
+│   │    ├── __init__.py
+│   │    ├── predict.py          // 모델 예측 코드
+│   │    ├── trainer.py          // 모델 학습 코드
+│   │    ├── utils.py            // utils
+│   │    └── tools        
+│   │        ├── learning.py        
+│   │        └── unicode.py       //기타 유니코드
+│   └── main.py                   // 실제 main 코드 
+└── requirements.txt              // 패키치 설치 파일
 ```
 ## 4. 시연 영상
 
