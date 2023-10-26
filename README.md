@@ -30,8 +30,10 @@
     </td>
     <td>
       <ul>
-        <li>Yolo v8과 OpenCV를 이용하여 객체를 직접 선택해 Image Segmentation하는 코드 구현</li>
-        <li>Deepfillv2, MAT 모델 적용</li>
+        <li>데이터 수집 및 분석</li>
+        <li>모델 설계</li>
+        <li>IPA 변환 규칙 구현 및 모델 최적화</li>
+        <li>모델 성능 평가</li>
         <li><a href = "mailto: chhj0319@pusan.ac.kr">chhj0319@pusan.ac.kr</a></li>
       </ul>
     </td>
