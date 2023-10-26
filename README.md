@@ -37,7 +37,8 @@
 
 ## 3. 구성도
 ### 전체 구성도
-![image](https://github.com/pnucse-capstone/capstone-2023-1-16/assets/68144657/cfe965d4-b00c-496b-ac3d-d6914bca6927)
+![플로우차트](https://github.com/pnucse-capstone/capstone-2023-1-04/assets/84282849/a94c0ab6-90ab-4013-ba35-d24cc4f25643)
+
 
 ### 파일 구조
 main 소스 파일 위치와 pretrained model 위치를 명시해놓음
