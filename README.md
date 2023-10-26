@@ -5,7 +5,8 @@
 추후 추가 예정
 
 3. 구성도
-추후 추가 예정
+![플로우차트](https://github.com/pnucse-capstone/capstone-2023-1-04/assets/84282849/a312f580-395b-4a40-9900-0cbfbbef35be)
+
 
 4. 소개 및 시연 영상
 추후 추가 예정
