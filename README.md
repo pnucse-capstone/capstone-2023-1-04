@@ -9,9 +9,9 @@
 ### 드루와 유니티의 숲 팀
 
 <table>
-  <tr>
+    <tr>
     <td>
-      천형주
+      권민규
     </td>
     <td>
       <ul>
@@ -23,7 +23,19 @@
   </tr>
   <tr>
     <td>
-      민예진
+      고상현
+    </td>
+    <td>
+      <ul>
+        <li>Yolo v8과 OpenCV를 이용하여 객체를 직접 선택해 Image Segmentation하는 코드 구현</li>
+        <li>Deepfillv2, MAT 모델 적용</li>
+        <li><a href = "mailto: chhj0319@pusan.ac.kr">chhj0319@pusan.ac.kr</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      박건우
     </td>
     <td>
       <ul>
