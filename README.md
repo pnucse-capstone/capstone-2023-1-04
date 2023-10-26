@@ -34,7 +34,7 @@
         <li>모델 설계</li>
         <li>IPA 변환 규칙 구현 및 모델 최적화</li>
         <li>모델 성능 평가</li>
-        <li><a href = "mailto: chhj0319@pusan.ac.kr">chhj0319@pusan.ac.kr</a></li>
+        <li><a href = "mailto: @">@</a></li>
       </ul>
     </td>
   </tr>
