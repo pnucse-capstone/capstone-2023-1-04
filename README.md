@@ -99,13 +99,8 @@ source                           // 소스 모음 (Inpainting model clone 위치
 pip install -r requirements.txt
 ```
 
-- pretrained model : 파일 구조도를 참고하여 배치  
-[LaMa](https://github.com/advimman/lama#links) (https://github.com/advimman/lama)  
-[Deepfillv2](https://drive.google.com/u/0/uc?id=1tvdQRmkphJK7FYveNAKSMWC6K09hJoyt&export=download) (https://github.com/nipponjo/deepfillv2-pytorch)   
-[MAT](https://mycuhk-my.sharepoint.com/personal/1155137927_link_cuhk_edu_hk/_layouts/15/onedrive.aspx?id=%2Fpersonal%2F1155137927%5Flink%5Fcuhk%5Fedu%5Fhk%2FDocuments%2FRelease%2FMAT&ga=1) (https://github.com/fenglinglwb/mat)  
-
 4. 사용법
 ```
-python main.py <<Inpainting Model 이름>>
+python main.py 
 ```
-Inpainting Model 이름 : LAMA, DEEPFILLV2, MAT 중 하나를 적는다.
+텍스트를 입력하세요: 문구가 나오면, 발음이 궁금한 영단어나 한글/영어 혼용 텍스트를 입력한다.
