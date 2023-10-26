@@ -67,8 +67,8 @@
 
 ### 파일 구조
 main 소스 파일 위치와 pretrained model 위치를 명시해놓음
-```
-/*source                           // 소스 모음 (Inpainting model clone 위치)
+!--```
+source                           // 소스 모음 (Inpainting model clone 위치)
 ├── bin                          // main program 소스 폴더
 │   ├── Enum.py                      // Enum
 │   ├── main.py                      // main 소스 파일
@@ -84,8 +84,8 @@ main 소스 파일 위치와 pretrained model 위치를 명시해놓음
 ├── MAT                              // Inpainting model : MAT
 │   └── pretrained                      // pretrained model 폴더
 │       └── Places_512.pkl                // MAT pretrained model (다운로드 해야 함)
-└── requirements.txt                // 패키치 설치 파일*/
-```
+└── requirements.txt                // 패키치 설치 파일
+```--
 ## 4. 시연 영상
 
 ## 5. 설치 및 사용법
