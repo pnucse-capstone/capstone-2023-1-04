@@ -65,7 +65,8 @@
        ex)DPICM = 디피아이시엠
 </p>
 <p>4. 위에 해당하지 않는 단어가 입력으로 들어오면, 모델을 사용해서 발음을 출력한다.</p>
-![image](https://github.com/pnucse-capstone/capstone-2023-1-04/assets/84282849/e96eb1b2-1f83-41f6-b971-fa33a8bd64cf)
+![한영혼용이미지](https://github.com/pnucse-capstone/capstone-2023-1-04/assets/84282849/3c5db9f8-8f4f-40fc-9009-02796896da5d)
+
 
 <p>-> Wife한테 다녀와도 되냐고 물었더니 ok 했어서 물어봤어요 But your friend랑 같이 있으면 i am 신뢰에요~</p>
 <p>-> 와이프한테 다녀와도 되냐고 물었더니 오케이 했어서 물어봤어요 벗 유어 프렌드랑 같이 있으면 아이 앰 신뢰에요~</p>
