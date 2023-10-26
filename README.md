@@ -89,7 +89,7 @@ source                           // 소스 모음 (Inpainting model clone 위치
 ## 4. 시연 영상
 
 ## 5. 설치 및 사용법
-1. 구동환경 : pytorch 2.0.1 / CUDA 11.8 / anaconda 23.7.2
+1. 구동환경 : pytorch 2.0.1 / CUDA 11.7
 2. 패키지 : requirements.txt 참고  
 3. 설치  
 - 버전에 맞는 pytorch 및 cuda 설치
