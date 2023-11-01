@@ -120,7 +120,7 @@ project
 └── requirements.txt              // 패키치 설치 파일
 ```
 ## 4. 시연 영상
-
+![2023년 전기 졸업과제 04 RNG 아니조](https://www.youtube.com/watch?v=f0FWNhBsa_U&t=24s)
 ## 5. 설치 및 사용법
 1. 구동환경 : pytorch 2.0.1 / CUDA 11.7
 2. 패키지 : requirements.txt 참고  
