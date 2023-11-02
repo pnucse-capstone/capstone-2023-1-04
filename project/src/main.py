@@ -9,6 +9,7 @@ from transformer_architecture import predict
 from transformer_architecture.make_vocab import tokenizer_kor
 
 
+
 # 경로
 ENG_DB_PATH = 'data/database/eng_database.db'
 IPA_DB_PATH = 'data/database/ipa_database.db'
@@ -96,12 +97,23 @@ class TextPronunciation:
 
         # 딥러닝 case
         else:
+            if word_str.find('\'') == -1:
+                pass
+            else:
+                word_str = word_str.replace("'", "") 
             self.no_result_count += 1
             result = predict.single_predict(word_str)
-            return result
+            if bool(re.search(r'[^ㄱ-ㅎ가-힣]', result)):
+                str_result = ""
+                for char in result:
+                    str_result += self.get_pronunciation(char, self.db_manager_alp)
+                return str_result   
+            else: 
+                return result
+
 
     def sentence_pronunciation(self, txt):
-        pattern = re.compile(r'[a-zA-Z]+')
+        pattern = re.compile(r'[a-zA-Z\']+')
         sentences = pattern.findall(txt)
         for value in sentences:
             txt = txt.replace(value, self.word_pronunciation(value), 1)
@@ -222,7 +234,6 @@ def compare(INPUT_SOURCE_PATH, OUTPUT_SOURCE_PATH):
         total += 1
         accuracy += calculate_accuracy(val.replace(" ", ""),sentences_trg[idx].replace(" ", ""))
     return accuracy / total
-
 
 if __name__ == '__main__':
     text_pronunciation = TextPronunciation()
