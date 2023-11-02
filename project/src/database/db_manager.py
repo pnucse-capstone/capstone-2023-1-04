@@ -3,43 +3,61 @@ import sqlite3
 class DatabaseManager:
     def __init__(self, db_file):
         self.db_file = db_file
-        self.conn = sqlite3.connect(self.db_file)
-        self.cursor = self.conn.cursor()
+
+    def _connect(self):
+        conn = sqlite3.connect(self.db_file)
+        cursor = conn.cursor()
+        return conn, cursor
 
     def execute_and_commit(self, query, params):
-        self.cursor.execute(query, params)
-        self.conn.commit()
+        conn, cursor = self._connect()
+        cursor.execute(query, params)
+        conn.commit()
+        cursor.close()
+        conn.close()
 
     def check_word_existence(self, word):
+        conn, cursor = self._connect()
+
+        # 첫 번째 쿼리: 원본 단어로 검색
         select_query = '''
             SELECT *
             FROM words
             WHERE origin_lang = ?
         '''
-        self.cursor.execute(select_query, (word,))
-        result = self.cursor.fetchone()
+        cursor.execute(select_query, (word,))
+        result = cursor.fetchone()
         if result:
+            cursor.close()
+            conn.close()
             return result
 
+        # 두 번째 쿼리: 소문자 변환 후 검색
         select_query = '''
         SELECT *
         FROM words
         WHERE origin_lang = ?
         '''
-        self.cursor.execute(select_query, (word.lower(),))
-        result = self.cursor.fetchone()
+        cursor.execute(select_query, (word.lower(),))
+        result = cursor.fetchone()
         if result:
+            cursor.close()
+            conn.close()
             return result
 
+        # 세 번째 쿼리: 대소문자를 구분하지 않고 검색 (COLLATE NOCASE 사용)
         select_query = '''
                 SELECT *
                 FROM words
                 WHERE origin_lang = ?
                 COLLATE NOCASE
             '''
-        self.cursor.execute(select_query, (word,))
-        return self.cursor.fetchone()
+        cursor.execute(select_query, (word,))
+        result = cursor.fetchone()
 
+        cursor.close()
+        conn.close()
+        return result
     #단일 query는 시간이 많이 걸리기 때문에, 데이터 한번에 query
     def check_words_existence(self, words_tuple):
         # 쿼리에 필요한 바인딩 개수를 words_tuple의 길이로 동적으로 생성
@@ -258,7 +276,7 @@ def main():
             "4": db_manager.modify_word,
         }
     else:
-        db_manager = DatabaseManager('data/database/eng_database.db')
+        db_manager = DatabaseManager('data/database/ipa_database.db')
         actions = {
             "1": db_manager.search_word,
             "2": db_manager.insert_word,
