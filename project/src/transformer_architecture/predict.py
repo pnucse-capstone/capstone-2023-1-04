@@ -133,9 +133,12 @@ def predict(config):
         prob = decoder_output.squeeze(0).max(dim=-1, keepdim=False)[1]
         next_word = prob.data[i]
         next_symbol = next_word.item()
-
-    eos_idx = int(torch.where(target[0] == kor_idx)[0][0])
-    target = target[0][:eos_idx].unsqueeze(0)
+    try:
+        eos_idx = int(torch.where(target[0] == kor_idx)[0][0])
+        target = target[0][:eos_idx].unsqueeze(0)
+    except Exception as e:
+        return config.input, config.input
+    
 
     # translation_tensor = [target length] filed with word indices
     target, attention_map = model(source, target)
@@ -165,20 +168,18 @@ def multi_predict(lis):
     return list_predict
 
 def single_predict(lone):
-    if lone != 'xx':
-        parser = argparse.ArgumentParser(description='Kor-Eng Translation prediction')
-        parser.add_argument('--input', type=str, default=str(lone).lower())
-        option = parser.parse_args()
-        inp, out = predict(option)
-        return out
-    else:
-        return 'xx'
+    parser = argparse.ArgumentParser(description='Kor-Eng Translation prediction')
+    parser.add_argument('--input', type=str, default=str(lone).lower())
+    option = parser.parse_args()
+    inp, out = predict(option)
+    return out
+
 if __name__ == '__main__':
-    data = read_data_raw(PATH) # txt 파일
+    # data = read_data_raw(PATH) # txt 파일
     # word_list_minimized = []
     # for val in range(0, len(word_list), 100):
     #     word_list_minimized.append(word_list[val])
-    list_predict = multi_predict(data)
+    list_predict = multi_predict([])
     with open(OUTPUT_PATH, 'w', encoding='utf-8') as outfile:
         for tmp_dict in list_predict:
             tmp_dict = str(tmp_dict).strip()
